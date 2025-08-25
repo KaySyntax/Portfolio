@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opoku-Temeng Nana Kofi - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('5590457.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #2c3e50;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        body.light-mode {
+            background: #f4f4f4;
+            color: #333;
+        }
+        body.light-mode::before {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2em;
+            position: relative;
+        }
+        header.light-mode {
+            background-color: #3498db;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 0 1em;
+        }
+        .section {
+            background: white;
+            padding: 1.5em;
+            margin-bottom: 1em;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+        }
+        .portfolio-item {
+            width: 200px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.1);
+        }
+        .portfolio-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .portfolio-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgb(255, 255, 255);
+            color: #2c3e50;
+            padding: 0.5em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .portfolio-item:hover .portfolio-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            padding: 0.5em 1em;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .theme-toggle:hover {
+            background: #2980b9;
+        }
+        .scroll-top {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 0.5em 1em;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        .scroll-top:hover {
+            background: #2980b9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #2c3e50;
+            padding: 1em;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 80%;
+            max-height: 80%;
+            overflow: auto;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 5px;
+        }
+        .modal-content p {
+            margin: 1em 0;
+            color: #ffffff;
+        }
+        .modal-close {
+            padding: 0.5em 1em;
+            background: #ffffff;
+            color: #2c3e50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-close:hover {
+            background: #3498db;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #2c3e50;
+            color: white;
+            width: 100%;
+        }
+        footer.light-mode {
+            background-color: #3498db;
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .social {
+            margin: 0.5em 0;
+        }
+        .social a {
+            color: #3498db;
+            margin: 0 0.5em;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+        .social a:hover {
+            color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .portfolio-item {
+                width: 100%;
+            }
+            .theme-toggle, .scroll-top {
+                top: 0.5em;
+                right: 0.5em;
+                padding: 0.3em 0.6em;
+            }
+            .modal-content {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Opoku-Temeng Nana Kofi</h1>
+        <p>Aspiring Frontend Engineer & Graphic Designer</p>
+        
+    </header>
+    <div class="container">
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Hi! I'm a beginner passionate about creating beautiful and functional web interfaces as well as great visual concepts and graphics. I'm learning HTML, CSS, JS and graphic design with tools like Adobe Suite(PS), and I'm excited to grow my skills</p>
+        </div>
+        <div class="section">
+            <h2>My Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openModal('ad_flyer.png', 'Ad Flyer')">
+                    <img src="ad_flyer.png" alt="Ad Flyer">
+                    <div class="portfolio-caption">Ad Flyer</div>
+                </div>
+                <div class="portfolio-item" onclick="openModal('FPL Flyer.png', 'Event Flyer')">
+                    <img src="FPL Flyer.png" alt="Event Flyer">
+                    <div class="portfolio-caption">Event Flyer (Adobe PS)</div>
+                </div>
+                <div class="portfolio-item" onclick="openModal('BRAND LOGO.png', 'Brand Logo')">
+                    <img src="BRAND LOGO.png" alt="Brand Logo">
+                    <div class="portfolio-caption">Brand Logo (Adobe PS)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="scroll-top" onclick="scrollToTop()">Back to Top</button>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Portfolio Image">
+            <p id="modal-caption"></p>
+            <button class="modal-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NANA KOFI OPOKU-TEMENG</p>
+            <div class="social">
+                <a href="https://wa.me/+233506480969"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/nkayynk.exe/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.snapchat.com/add/mr_opokut"><i class="fab fa-snapchat"></i></a>
+                <a href="http://linkedin.com/in/opoku-temeng-nana-kofi-37b085348"><i class="fab fa-linkedin"></i></a>
+                <p>Contact: opokutemengnanakofi2006@gmail.com | <a href="RESUME.pdf" style="color: #3498db;">Download CV</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
